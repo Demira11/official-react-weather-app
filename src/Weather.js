@@ -19,8 +19,6 @@ export default function Weather(props) {
     });
   }
 
-  setReady(true);
-
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -43,7 +41,7 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <h1>weatherData.city</h1>
+        <h1>{weatherData.city}</h1>
         <ul>
           <li>{weatherData.date}</li>
           <li className="text-capitalize">{weatherData.description}</li>
@@ -75,7 +73,6 @@ export default function Weather(props) {
     );
   } else {
     const apiKey = "58ac12a7e6b5046deca0a504dd30a1c1";
-
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
     return "Loading....";
